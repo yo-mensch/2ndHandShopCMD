@@ -23,7 +23,6 @@ public class RegisterHandler implements Handler{
         System.out.println("Enter password:");
         String passwordInput = scanner.nextLine();
         //TODO: move to ShopService
-        User newUser = new User(usernameInput, passwordInput,emailInput);
-        shopService.addUserToShop(newUser);
+        shopService.register(usernameInput,passwordInput,emailInput);
     }
 }

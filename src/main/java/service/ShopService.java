@@ -25,4 +25,9 @@ public class ShopService {
             }
         }
     }
+
+    public void register(String inputUsername, String inputPassword, String inputEmail){
+        User newUser = new User(inputUsername, inputPassword,inputEmail);
+        this.addUserToShop(newUser);
+    }
 }
