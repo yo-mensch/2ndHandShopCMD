@@ -1,6 +1,5 @@
 package view.handler;
 
-import model.User;
 import service.ShopService;
 
 import java.util.Scanner;
@@ -22,7 +21,6 @@ public class RegisterHandler implements Handler{
         String emailInput = scanner.nextLine();
         System.out.println("Enter password:");
         String passwordInput = scanner.nextLine();
-        //TODO: move to ShopService
         shopService.register(usernameInput,passwordInput,emailInput);
     }
 }

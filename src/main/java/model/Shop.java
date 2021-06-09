@@ -7,6 +7,7 @@ public class Shop {
     private static Shop instance = new Shop();
     private String version;
     private List<User> userList = new ArrayList<>();
+    private List<Product> productList = new ArrayList<>();
 
     private Shop() {}
 
@@ -29,4 +30,8 @@ public class Shop {
     public void setVersion(String version) {
         this.version = version;
     }
+
+    public List<Product> getProductList() { return productList; }
+
+    public void setProductList(List<Product> productList) { this.productList = productList; }
 }
