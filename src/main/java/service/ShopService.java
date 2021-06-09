@@ -1,7 +1,11 @@
 package service;
 
+import model.Product;
 import model.Shop;
 import model.User;
+import view.home.HomeView;
+
+import java.util.Scanner;
 
 public class ShopService {
     private Shop shop;
@@ -15,11 +19,37 @@ public class ShopService {
         return user;
     }
 
+    public Product addProductToShop(Product product){
+        shop.getProductList().add(product);
+        return product;
+    }
+
+    public User findUserByEmail(String email){
+        for(User user: shop.getUserList()){
+            if(email.equals(user.getEmail())){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public User findUserByUsername(String username){
+        for(User user: shop.getUserList()){
+            if(username.equals(user.getUsername())){
+                return user;
+            }
+        }
+        return null;
+    }
+
     public void login(String logInUsername, String logInPassword){
         //Shop shop = Shop.getInstance();
         for(User user: shop.getUserList()){
             if(logInUsername.equals(user.getUsername())&&logInPassword.equals(user.getPassword())){
                 System.out.println("Succesfully logged in!");
+                //paduoti user i homeview?
+                HomeView homeView = new HomeView(new ShopService(), new Scanner(System.in));
+                homeView.run(user);
             } else {
                 System.out.println("Username or password not correcto");
             }
@@ -35,15 +65,13 @@ public class ShopService {
     }
 
     private boolean isUserTaken(String inputUsername, String inputEmail) {
-        for(User user: shop.getUserList()){
-            if(inputUsername.equals(user.getUsername())){
-                System.out.println("Username already exists");
-                return true;
-            }
-            if(inputEmail.equals(user.getEmail())){
-                System.out.println("User with this email is already registered");
-                return true;
-            }
+        if(findUserByEmail(inputEmail)!=null){
+            System.out.println("User with this email is already registered");
+            return true;
+        }
+        if(findUserByUsername(inputUsername)!=null){
+            System.out.println("Username already exists");
+            return true;
         }
         return false;
     }

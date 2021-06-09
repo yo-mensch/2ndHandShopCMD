@@ -1,7 +1,5 @@
 package view.handler;
 
-import model.Shop;
-import model.User;
 import service.ShopService;
 
 import java.util.Scanner;
