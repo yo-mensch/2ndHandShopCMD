@@ -43,11 +43,9 @@ public class ShopService {
     }
 
     public void login(String logInUsername, String logInPassword){
-        //Shop shop = Shop.getInstance();
         for(User user: shop.getUserList()){
             if(logInUsername.equals(user.getUsername())&&logInPassword.equals(user.getPassword())){
                 System.out.println("Succesfully logged in!");
-                //paduoti user i homeview?
                 HomeView homeView = new HomeView(new ShopService(), new Scanner(System.in));
                 homeView.run(user);
             } else {
