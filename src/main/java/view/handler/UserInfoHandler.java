@@ -1,12 +1,21 @@
 package view.handler;
 
+import service.UserService;
+
+import java.util.Scanner;
+
 public class UserInfoHandler implements Handler{
-    public UserInfoHandler() {
+    private UserService userService;
+    private Scanner scanner;
+
+    public UserInfoHandler(UserService userService, Scanner scanner) {
+        this.userService = userService;
+        this.scanner = scanner;
     }
 
     @Override
     public void execute(){
-        //ar cia paruninti kita view su kitom komandom???
         System.out.println("You entered user info handler");
+        System.out.println("Your username: " + userService.getUsername());
     }
 }

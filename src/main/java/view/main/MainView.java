@@ -33,8 +33,6 @@ public class MainView {
     }
 
     public void run(){
-        //jeigu prisilogine --> renderinu homeview
-        //jeigu neprisilogine
         showMainMenu();
         String userInput = "";
         do {

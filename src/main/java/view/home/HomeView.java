@@ -3,6 +3,7 @@ package view.home;
 import model.Shop;
 import model.User;
 import service.ShopService;
+import service.UserService;
 import view.Controller;
 import view.handler.ProductHandler;
 import view.handler.UserInfoHandler;
@@ -17,10 +18,11 @@ public class HomeView {
     private Map commands;
     private UserInfoHandler userInfoHandler;
     private ProductHandler productHandler;
+    private UserService userService;
 
-    public HomeView(ShopService shopService, Scanner scanner) {
+    public HomeView(UserService userService, Scanner scanner) {
         this.scanner = scanner;
-        userInfoHandler = new UserInfoHandler();
+        userInfoHandler = new UserInfoHandler(userService, scanner);
         productHandler = new ProductHandler();
         addCommands();
         this.controller = new Controller(commands);
@@ -41,7 +43,7 @@ public class HomeView {
         System.out.println("0 - Log out");
     }
 
-    public void run(User loggedUser){
+    public void run(){
         printMenu();
         String userInput = "";
         do {
