@@ -1,12 +1,7 @@
 package view.home;
 
-import model.Shop;
-import model.User;
-import service.ShopService;
 import service.UserService;
 import view.Controller;
-import view.handler.ProductHandler;
-import view.handler.UserInfoHandler;
 
 import java.util.HashMap;
 import java.util.Map;

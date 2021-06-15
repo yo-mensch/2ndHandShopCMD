@@ -4,8 +4,6 @@ import model.Shop;
 import model.User;
 import service.ShopService;
 import view.Controller;
-import view.handler.LoginHandler;
-import view.handler.RegisterHandler;
 
 import java.util.HashMap;
 import java.util.Map;

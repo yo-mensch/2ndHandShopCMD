@@ -1,6 +1,8 @@
-package view.handler;
+package view.home;
 
-public class ProductHandler implements Handler{
+import view.handler.Handler;
+
+public class ProductHandler implements Handler {
     public ProductHandler() {
     }
 

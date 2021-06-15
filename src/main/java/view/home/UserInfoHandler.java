@@ -1,10 +1,11 @@
-package view.handler;
+package view.home;
 
 import service.UserService;
+import view.handler.Handler;
 
 import java.util.Scanner;
 
-public class UserInfoHandler implements Handler{
+public class UserInfoHandler implements Handler {
     private UserService userService;
     private Scanner scanner;
 
