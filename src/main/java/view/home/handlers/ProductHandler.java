@@ -1,4 +1,4 @@
-package view.home;
+package view.home.handlers;
 
 import view.handler.Handler;
 

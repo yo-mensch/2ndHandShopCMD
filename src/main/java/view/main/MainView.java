@@ -1,9 +1,9 @@
 package view.main;
 
-import model.Shop;
-import model.User;
 import service.ShopService;
 import view.Controller;
+import view.main.handlers.LoginHandler;
+import view.main.handlers.RegisterHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,10 +38,6 @@ public class MainView {
 
             if(!userInput.equals("0")){
                 controller.handleUserInput(userInput);
-                System.out.println("User list:");
-                for(User user: Shop.getInstance().getUserList()){
-                    System.out.println(user.getUsername());
-                }
             }
 
             showMainMenu();

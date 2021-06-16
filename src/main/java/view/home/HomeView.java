@@ -2,6 +2,8 @@ package view.home;
 
 import service.UserService;
 import view.Controller;
+import view.home.handlers.ProductHandler;
+import view.home.handlers.UserInfoHandler;
 
 import java.util.HashMap;
 import java.util.Map;

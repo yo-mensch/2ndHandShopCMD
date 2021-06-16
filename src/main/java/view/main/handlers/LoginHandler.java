@@ -1,4 +1,4 @@
-package view.main;
+package view.main.handlers;
 
 import service.ShopService;
 import view.handler.Handler;

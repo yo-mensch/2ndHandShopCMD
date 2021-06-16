@@ -1,4 +1,4 @@
-package view.home;
+package view.home.handlers;
 
 import service.UserService;
 import view.handler.Handler;
@@ -17,6 +17,7 @@ public class UserInfoHandler implements Handler {
     @Override
     public void execute(){
         System.out.println("You entered user info handler");
-        System.out.println("Your username: " + userService.getUsername());
+        System.out.println("1 - Enter new email and password");
+        System.out.println("2 - Enter your address");
     }
 }

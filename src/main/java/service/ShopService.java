@@ -1,5 +1,6 @@
 package service;
 
+import model.Address;
 import model.Product;
 import model.Shop;
 import model.User;
@@ -14,14 +15,27 @@ public class ShopService {
         this.shop = Shop.getInstance();
     }
 
-    public User addUserToShop(User user){
+    public void addUserToShop(User user){
         shop.getUserList().add(user);
-        return user;
     }
 
-    public Product addProductToShop(Product product){
+    public void addProductToShop(Product product){
         shop.getProductList().add(product);
-        return product;
+    }
+
+    public void updateUserEmail(String username, String email){
+        User foundUser = findUserByUsername(username);
+        foundUser.setEmail(email);
+    }
+
+    public void updateUserPassword(String username, String password){
+        User foundUser = findUserByUsername(username);
+        foundUser.setPassword(password);
+    }
+
+    public void updateUserAddress(String username, Address address){
+        User foundUser = findUserByUsername(username);
+        foundUser.setAddress(address);
     }
 
     public User findUserByEmail(String email){
@@ -45,7 +59,7 @@ public class ShopService {
     public void login(String logInUsername, String logInPassword){
         for(User user: shop.getUserList()){
             if(logInUsername.equals(user.getUsername())&&logInPassword.equals(user.getPassword())){
-                System.out.println("Succesfully logged in!");
+                System.out.println("Successfully logged in!");
                 HomeView homeView = new HomeView(new UserService(user,this), new Scanner(System.in));
                 homeView.run();
             } else {
