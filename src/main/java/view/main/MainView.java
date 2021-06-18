@@ -38,9 +38,8 @@ public class MainView {
 
             if(!userInput.equals("0")){
                 controller.handleUserInput(userInput);
+                showMainMenu();
             }
-
-            showMainMenu();
         } while(!userInput.equals("0"));
         System.exit(0);
     }
