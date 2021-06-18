@@ -2,6 +2,7 @@ package view.home;
 
 import service.UserService;
 import view.Controller;
+import view.home.handlers.AddressHandler;
 import view.home.handlers.EmailHandler;
 import view.home.handlers.PasswordHandler;
 
@@ -16,12 +17,14 @@ public class UserInfoView {
     private UserService userService;
     private PasswordHandler passwordHandler;
     private EmailHandler emailHandler;
+    private AddressHandler addressHandler;
 
     public UserInfoView(Scanner scanner, UserService userService) {
         this.scanner = scanner;
         this.userService = userService;
         passwordHandler = new PasswordHandler(this.userService,scanner);
         emailHandler = new EmailHandler(this.userService,scanner);
+        addressHandler = new AddressHandler(this.userService,scanner);
         addCommands();
         this.controller = new Controller(commands);
     }
@@ -30,7 +33,7 @@ public class UserInfoView {
         commands = new HashMap();
         commands.put("1",passwordHandler);
         commands.put("2", emailHandler);
-        //commands.put("3", shoppingHandler);
+        commands.put("3", addressHandler);
     }
 
     private void printMenu(){

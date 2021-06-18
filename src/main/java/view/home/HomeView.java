@@ -37,6 +37,7 @@ public class HomeView {
         System.out.println("1 - Edit user info");
         System.out.println("2 - Manage my products");
         System.out.println("3 - Go to shop");
+        System.out.println("4 - Print your info");
         System.out.println("0 - Log out");
     }
 
@@ -46,7 +47,7 @@ public class HomeView {
         do {
             userInput = scanner.nextLine();
 
-            if(!userInput.equals("0")){
+            if(!userInput.equals("0")&&!userInput.equals("4")){
                 controller.handleUserInput(userInput);
             }
 
