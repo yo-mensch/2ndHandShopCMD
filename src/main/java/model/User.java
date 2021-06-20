@@ -10,13 +10,14 @@ public class User {
     private String password;
     private String email;
     private List<Product> productsForSale;
+    private Address address;
 
     public User(String username, String password, String email) {
         this.id = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.email = email;
-        this.productsForSale = new ArrayList<Product>();
+        this.productsForSale = new ArrayList<>();
     }
 
     public UUID getId() {
@@ -53,5 +54,13 @@ public class User {
 
     public void setProductsForSale(List<Product> productsForSale) {
         this.productsForSale = productsForSale;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

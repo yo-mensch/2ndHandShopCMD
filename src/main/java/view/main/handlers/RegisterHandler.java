@@ -1,10 +1,11 @@
-package view.handler;
+package view.main.handlers;
 
 import service.ShopService;
+import view.handler.Handler;
 
 import java.util.Scanner;
 
-public class RegisterHandler implements Handler{
+public class RegisterHandler implements Handler {
     private ShopService shopService;
     private Scanner scanner;
 

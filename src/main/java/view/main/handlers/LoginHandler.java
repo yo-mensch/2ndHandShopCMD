@@ -1,10 +1,11 @@
-package view.handler;
+package view.main.handlers;
 
 import service.ShopService;
+import view.handler.Handler;
 
 import java.util.Scanner;
 
-public class LoginHandler implements Handler{
+public class LoginHandler implements Handler {
     private ShopService shopService;
     private Scanner scanner;
 
@@ -20,6 +21,6 @@ public class LoginHandler implements Handler{
         String logInUsername = scanner.nextLine();
         System.out.println("Enter password: ");
         String logInPassword = scanner.nextLine();
-        shopService.login(logInUsername,logInPassword);
+        shopService.login(logInUsername, logInPassword);
     }
 }

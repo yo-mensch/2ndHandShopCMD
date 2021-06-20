@@ -1,11 +1,9 @@
 package view.home;
 
-import model.Shop;
-import model.User;
-import service.ShopService;
+import service.UserService;
 import view.Controller;
-import view.handler.ProductHandler;
-import view.handler.UserInfoHandler;
+import view.home.handlers.ProductHandler;
+import view.home.handlers.UserInfoHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,9 +16,9 @@ public class HomeView {
     private UserInfoHandler userInfoHandler;
     private ProductHandler productHandler;
 
-    public HomeView(ShopService shopService, Scanner scanner) {
+    public HomeView(UserInfoHandler userInfoHandler, Scanner scanner) {
         this.scanner = scanner;
-        userInfoHandler = new UserInfoHandler();
+        this.userInfoHandler = userInfoHandler;
         productHandler = new ProductHandler();
         addCommands();
         this.controller = new Controller(commands);
@@ -33,25 +31,26 @@ public class HomeView {
         //commands.put("3", shoppingHandler);
     }
 
-    private void printMenu(){
-        System.out.println("-----Logged In-----");
-        System.out.println("1 - Edit user info");
-        System.out.println("2 - Manage my products");
-        System.out.println("3 - Go to shop");
-        System.out.println("0 - Log out");
-    }
-
-    public void run(User loggedUser){
+    public void run(){
         printMenu();
         String userInput = "";
         do {
             userInput = scanner.nextLine();
 
-            if(!userInput.equals("0")){
+            if(!userInput.equals("0")&&!userInput.equals("4")){
                 controller.handleUserInput(userInput);
             }
 
             printMenu();
         } while(!userInput.equals("0"));
+    }
+
+    private void printMenu(){
+        System.out.println("-----Logged In-----");
+        System.out.println("1 - Edit user info");
+        System.out.println("2 - Manage my products");
+        System.out.println("3 - Go to shop");
+        System.out.println("4 - Print your info");
+        System.out.println("0 - Log out");
     }
 }

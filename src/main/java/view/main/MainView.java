@@ -1,11 +1,9 @@
 package view.main;
 
-import model.Shop;
-import model.User;
 import service.ShopService;
 import view.Controller;
-import view.handler.LoginHandler;
-import view.handler.RegisterHandler;
+import view.main.handlers.LoginHandler;
+import view.main.handlers.RegisterHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,8 +31,6 @@ public class MainView {
     }
 
     public void run(){
-        //jeigu prisilogine --> renderinu homeview
-        //jeigu neprisilogine
         showMainMenu();
         String userInput = "";
         do {
@@ -42,13 +38,8 @@ public class MainView {
 
             if(!userInput.equals("0")){
                 controller.handleUserInput(userInput);
-                System.out.println("User list:");
-                for(User user: Shop.getInstance().getUserList()){
-                    System.out.println(user.getUsername());
-                }
+                showMainMenu();
             }
-
-            showMainMenu();
         } while(!userInput.equals("0"));
         System.exit(0);
     }
