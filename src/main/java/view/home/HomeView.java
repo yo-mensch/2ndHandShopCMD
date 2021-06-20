@@ -15,11 +15,10 @@ public class HomeView {
     private Map commands;
     private UserInfoHandler userInfoHandler;
     private ProductHandler productHandler;
-    private UserService userService;
 
-    public HomeView(UserService userService, Scanner scanner) {
+    public HomeView(UserInfoHandler userInfoHandler, Scanner scanner) {
         this.scanner = scanner;
-        userInfoHandler = new UserInfoHandler(userService, scanner);
+        this.userInfoHandler = userInfoHandler;
         productHandler = new ProductHandler();
         addCommands();
         this.controller = new Controller(commands);
@@ -30,15 +29,6 @@ public class HomeView {
         commands.put("1",userInfoHandler);
         commands.put("2", productHandler);
         //commands.put("3", shoppingHandler);
-    }
-
-    private void printMenu(){
-        System.out.println("-----Logged In-----");
-        System.out.println("1 - Edit user info");
-        System.out.println("2 - Manage my products");
-        System.out.println("3 - Go to shop");
-        System.out.println("4 - Print your info");
-        System.out.println("0 - Log out");
     }
 
     public void run(){
@@ -53,5 +43,14 @@ public class HomeView {
 
             printMenu();
         } while(!userInput.equals("0"));
+    }
+
+    private void printMenu(){
+        System.out.println("-----Logged In-----");
+        System.out.println("1 - Edit user info");
+        System.out.println("2 - Manage my products");
+        System.out.println("3 - Go to shop");
+        System.out.println("4 - Print your info");
+        System.out.println("0 - Log out");
     }
 }

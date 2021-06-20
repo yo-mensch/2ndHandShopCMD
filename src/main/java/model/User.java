@@ -17,7 +17,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.productsForSale = new ArrayList<Product>();
+        this.productsForSale = new ArrayList<>();
     }
 
     public UUID getId() {

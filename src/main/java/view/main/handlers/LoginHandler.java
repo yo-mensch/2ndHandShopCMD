@@ -21,6 +21,6 @@ public class LoginHandler implements Handler {
         String logInUsername = scanner.nextLine();
         System.out.println("Enter password: ");
         String logInPassword = scanner.nextLine();
-        shopService.login(logInUsername,logInPassword);
+        shopService.login(logInUsername, logInPassword);
     }
 }

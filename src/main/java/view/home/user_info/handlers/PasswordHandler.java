@@ -1,4 +1,4 @@
-package view.home.handlers;
+package view.home.user_info.handlers;
 
 import service.UserService;
 import view.handler.Handler;
@@ -15,14 +15,14 @@ public class PasswordHandler implements Handler {
     }
 
     @Override
-    public void execute(){
+    public void execute() {
         boolean doPasswordsMatch = false;
-        while(!doPasswordsMatch){
+        while (!doPasswordsMatch) {
             System.out.println("Enter your new password: ");
             String newPassword = scanner.nextLine();
             System.out.println("Confirm your new password: ");
             String confirmedPassword = scanner.nextLine();
-            if(newPassword.equals(confirmedPassword)){
+            if (newPassword.equals(confirmedPassword)) {
                 doPasswordsMatch = true;
                 userService.updatePassword(newPassword);
             } else {

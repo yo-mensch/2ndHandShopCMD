@@ -1,4 +1,4 @@
-package view.home.handlers;
+package view.home.user_info.handlers;
 
 import model.Address;
 import service.UserService;
