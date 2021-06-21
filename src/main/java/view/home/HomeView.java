@@ -16,10 +16,10 @@ public class HomeView {
     private UserInfoHandler userInfoHandler;
     private ProductHandler productHandler;
 
-    public HomeView(UserInfoHandler userInfoHandler, Scanner scanner) {
+    public HomeView(UserInfoHandler userInfoHandler, ProductHandler productHandler, Scanner scanner) {
         this.scanner = scanner;
         this.userInfoHandler = userInfoHandler;
-        productHandler = new ProductHandler();
+        this.productHandler = productHandler;
         addCommands();
         this.controller = new Controller(commands);
     }

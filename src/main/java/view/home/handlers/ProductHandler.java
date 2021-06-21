@@ -1,13 +1,24 @@
 package view.home.handlers;
 
+import service.UserService;
 import view.handler.Handler;
+import view.home.product_info.handlers.ProductInfoView;
+
+import java.util.Scanner;
 
 public class ProductHandler implements Handler {
-    public ProductHandler() {
+    private UserService userService;
+    private Scanner scanner;
+
+    public ProductHandler(UserService userService, Scanner scanner) {
+        this.userService = userService;
+        this.scanner = scanner;
     }
 
     @Override
     public void execute(){
         System.out.println("you entered product handler");
+        ProductInfoView productInfoView = new ProductInfoView(scanner,userService);
+        productInfoView.run();
     }
 }

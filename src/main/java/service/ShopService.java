@@ -4,6 +4,7 @@ import model.Product;
 import model.Shop;
 import model.User;
 import view.home.HomeView;
+import view.home.handlers.ProductHandler;
 import view.home.handlers.UserInfoHandler;
 
 import java.util.Scanner;
@@ -48,8 +49,9 @@ public class ShopService {
         Scanner scanner = new Scanner(System.in);
         UserService userService = new UserService(user, this);
         UserInfoHandler userInfoHandler = new UserInfoHandler(userService, scanner);
+        ProductHandler productHandler = new ProductHandler(userService,scanner);
 
-        HomeView homeView = new HomeView(userInfoHandler, scanner);
+        HomeView homeView = new HomeView(userInfoHandler,productHandler, scanner);
         homeView.run();
     }
 
