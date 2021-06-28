@@ -2,7 +2,7 @@ package view.home.handlers;
 
 import service.UserService;
 import view.handler.Handler;
-import view.home.product_info.handlers.ProductInfoView;
+import view.home.product_info.ProductInfoView;
 
 import java.util.Scanner;
 
