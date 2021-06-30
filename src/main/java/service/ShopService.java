@@ -24,6 +24,10 @@ public class ShopService {
         shop.getProductList().add(product);
     }
 
+    public void deleteProductFromShop(Product product){
+        shop.getProductList().remove(product);
+    }
+
    public void login(String logInUsername, String logInPassword) {
 
         if (shop.getUserList().isEmpty()) {

@@ -22,9 +22,9 @@ public class ProductInfoView {
     public ProductInfoView(Scanner scanner, UserService userService) {
         this.scanner = scanner;
         this.userService = userService;
-        productAdditionHandler = new ProductAdditionHandler();
-        productDeletionHandler = new ProductDeletionHandler();
-        productListHandler = new ProductListHandler();
+        productAdditionHandler = new ProductAdditionHandler(this.userService,scanner);
+        productDeletionHandler = new ProductDeletionHandler(this.userService,scanner);
+        productListHandler = new ProductListHandler(this.userService,scanner);
         addCommands();
         this.controller = new Controller(commands);
     }
