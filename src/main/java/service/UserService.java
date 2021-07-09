@@ -6,7 +6,7 @@ import model.User;
 
 import java.util.List;
 
-public class UserService {
+public class  UserService {
     private User loggedInUser;
     private ShopService shopService;
 
