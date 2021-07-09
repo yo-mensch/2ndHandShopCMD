@@ -15,6 +15,10 @@ public class UserService {
         this.shopService = shopService;
     }
 
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
     public String getUsername() {
         return loggedInUser.getUsername();
     }
@@ -39,6 +43,19 @@ public class UserService {
             }
         }
         return null;
+    }
+
+    public void deleteProductForSale(String productName){
+        List<Product> productList = loggedInUser.getProductsForSale();
+        for(Product product : productList){
+            if(productName.equals(product.getName())){
+                productList.remove(product);
+                loggedInUser.setProductsForSale(productList);
+                shopService.deleteProductFromShop(product);
+                return;
+            }
+        }
+        System.out.println("Product not found");
     }
 
     public void updateUserAddress(Address address) {
