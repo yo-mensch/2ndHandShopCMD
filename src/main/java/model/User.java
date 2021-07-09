@@ -11,6 +11,7 @@ public class User {
     private String email;
     private List<Product> productsForSale;
     private Address address;
+    private float balance;
 
     public User(String username, String password, String email) {
         this.id = UUID.randomUUID();
@@ -18,6 +19,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.productsForSale = new ArrayList<>();
+        this.balance = 100;
     }
 
     public UUID getId() {
@@ -62,5 +64,13 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 }
