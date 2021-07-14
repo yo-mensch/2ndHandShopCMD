@@ -8,6 +8,8 @@ import view.home.handlers.ProductHandler;
 import view.home.handlers.ShoppingHandler;
 import view.home.handlers.UserInfoHandler;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ShopService {
@@ -100,6 +102,16 @@ public class ShopService {
     private void registerUser(String inputUsername, String inputPassword, String inputEmail) {
         User newUser = new User(inputUsername, inputPassword, inputEmail);
         addUserToShop(newUser);
+    }
+
+    public List<Product> getProductsByUser(User user){
+        List<Product> foundProducts = new ArrayList<>();
+        for(Product product : shop.getProductList()){
+            if(product.getAuthor() != user) {
+                foundProducts.add(product);
+            }
+        }
+        return foundProducts;
     }
 
 }

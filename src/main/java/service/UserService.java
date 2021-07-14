@@ -36,6 +36,10 @@ public class  UserService {
         return loggedInUser.getShoppingCart();
     }
 
+    public List<Product> getAvailableProducts(){
+        return shopService.getProductsByUser(loggedInUser);
+    }
+
     public void addProductForSale(Product product) {
         loggedInUser.getProductsForSale().add(product);
         shopService.addProductToShop(product);
