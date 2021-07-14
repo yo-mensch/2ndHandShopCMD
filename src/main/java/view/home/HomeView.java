@@ -3,6 +3,7 @@ package view.home;
 import service.UserService;
 import view.Controller;
 import view.home.handlers.ProductHandler;
+import view.home.handlers.ShoppingHandler;
 import view.home.handlers.UserInfoHandler;
 
 import java.util.HashMap;
@@ -15,11 +16,13 @@ public class HomeView {
     private Map commands;
     private UserInfoHandler userInfoHandler;
     private ProductHandler productHandler;
+    private ShoppingHandler shoppingHandler;
 
-    public HomeView(UserInfoHandler userInfoHandler, ProductHandler productHandler, Scanner scanner) {
+    public HomeView(UserInfoHandler userInfoHandler, ProductHandler productHandler, ShoppingHandler shoppingHandler, Scanner scanner) {
         this.scanner = scanner;
         this.userInfoHandler = userInfoHandler;
         this.productHandler = productHandler;
+        this.shoppingHandler = shoppingHandler;
         addCommands();
         this.controller = new Controller(commands);
     }
@@ -28,7 +31,7 @@ public class HomeView {
         commands = new HashMap();
         commands.put("1",userInfoHandler);
         commands.put("2", productHandler);
-        //commands.put("3", shoppingHandler);
+        commands.put("3", shoppingHandler);
     }
 
     public void run(){

@@ -11,6 +11,7 @@ public class User {
     private String email;
     private List<Product> productsForSale;
     private Address address;
+    private ShoppingCart shoppingCart;
     private float balance;
 
     public User(String username, String password, String email) {
@@ -20,6 +21,7 @@ public class User {
         this.email = email;
         this.productsForSale = new ArrayList<>();
         this.balance = 100;
+        this.shoppingCart = new ShoppingCart(new ArrayList<>(),0);
     }
 
     public UUID getId() {
@@ -72,5 +74,13 @@ public class User {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 }

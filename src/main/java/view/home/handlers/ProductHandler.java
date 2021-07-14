@@ -17,7 +17,6 @@ public class ProductHandler implements Handler {
 
     @Override
     public void execute(){
-        System.out.println("you entered product handler");
         ProductInfoView productInfoView = new ProductInfoView(scanner,userService);
         productInfoView.run();
     }

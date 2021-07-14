@@ -2,6 +2,7 @@ package service;
 
 import model.Address;
 import model.Product;
+import model.ShoppingCart;
 import model.User;
 
 import java.util.List;
@@ -29,6 +30,10 @@ public class  UserService {
 
     public List<Product> getProductsForSale(){
         return loggedInUser.getProductsForSale();
+    }
+
+    public ShoppingCart getShoppingCart(){
+        return loggedInUser.getShoppingCart();
     }
 
     public void addProductForSale(Product product) {
