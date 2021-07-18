@@ -104,7 +104,7 @@ public class ShopService {
         addUserToShop(newUser);
     }
 
-    public List<Product> getProductsByUser(User user){
+    public List<Product> getAvailableProducts(User user){
         List<Product> foundProducts = new ArrayList<>();
         for(Product product : shop.getProductList()){
             if(product.getAuthor() != user) {
@@ -114,4 +114,12 @@ public class ShopService {
         return foundProducts;
     }
 
+    public Product findProductByName(String productName){
+        for(Product product : shop.getProductList()){
+            if(product.getName().equals(productName)){
+                return product;
+            }
+        }
+        return null;
+    }
 }

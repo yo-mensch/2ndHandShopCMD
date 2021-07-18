@@ -37,7 +37,7 @@ public class  UserService {
     }
 
     public List<Product> getAvailableProducts(){
-        return shopService.getProductsByUser(loggedInUser);
+        return shopService.getAvailableProducts(loggedInUser);
     }
 
     public void addProductForSale(Product product) {
@@ -77,5 +77,29 @@ public class  UserService {
 
     public void updateEmail(String email) {
         loggedInUser.setEmail(email);
+    }
+
+    public void addProductToCart(Product product){
+        getShoppingCart().getProducts().add(product);
+        calculateTotalPrice();
+    }
+
+    public void removeProductFromCart(Product product){
+        getShoppingCart().getProducts().remove(product);
+        calculateTotalPrice();
+    }
+
+    public void calculateTotalPrice(){
+        float price = 0.0F;
+            for(Product product : getShoppingCart().getProducts()){
+                if(product!=null){
+                    price += product.getPrice();
+                }
+            }
+        getShoppingCart().setTotalPrice(price);
+    }
+
+    public Product findProductByName(String productName){
+        return shopService.findProductByName(productName);
     }
 }
