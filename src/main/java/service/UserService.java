@@ -99,6 +99,13 @@ public class  UserService {
         getShoppingCart().setTotalPrice(price);
     }
 
+    public boolean isCartEmpty(){
+        for(Product product : getShoppingCart().getProducts()){
+            return false;
+        }
+        return true;
+    }
+
     public Product findProductByName(String productName){
         return shopService.findProductByName(productName);
     }

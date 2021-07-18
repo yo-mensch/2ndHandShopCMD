@@ -122,4 +122,13 @@ public class ShopService {
         }
         return null;
     }
+
+    public void deleteBoughtProducts(){
+        for(Product product : shop.getProductList()){
+            if(product.isBought()){
+                product.getAuthor().getProductsForSale().remove(product);
+                deleteProductFromShop(product);
+            }
+        }
+    }
 }

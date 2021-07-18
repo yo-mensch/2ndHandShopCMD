@@ -8,6 +8,7 @@ public class Product {
     private String description;
     private User author;
     private float price;
+    private boolean isBought;
 
     public Product(String name, String description, float price, User author) {
         this.id = UUID.randomUUID();
@@ -15,6 +16,7 @@ public class Product {
         this.description = description;
         this.price = price;
         this.author = author;
+        this.isBought = false;
     }
 
     public UUID getId() { return id; }
@@ -32,4 +34,12 @@ public class Product {
     public float getPrice() { return price; }
 
     public void setPrice(float price) { this.price = price; }
+
+    public boolean isBought() {
+        return isBought;
+    }
+
+    public void setBoughtStatus(boolean bought) {
+        isBought = bought;
+    }
 }

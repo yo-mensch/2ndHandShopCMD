@@ -20,7 +20,7 @@ public class ShoppingView {
     public ShoppingView(UserService userService,Scanner scanner) {
         this.userService = userService;
         this.scanner = scanner;
-        shoppingCartHandler = new ShoppingCartHandler(userService);
+        shoppingCartHandler = new ShoppingCartHandler(userService,scanner);
         availableProductHandler = new AvailableProductHandler(userService,scanner);
         addCommands();
         this.controller = new Controller(commands);
