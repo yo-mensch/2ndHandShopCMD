@@ -32,6 +32,10 @@ public class  UserService {
         return loggedInUser.getProductsForSale();
     }
 
+    public List<Product> getBoughtProducts(){
+        return loggedInUser.getBoughtProducts();
+    }
+
     public ShoppingCart getShoppingCart(){
         return loggedInUser.getShoppingCart();
     }
@@ -108,5 +112,22 @@ public class  UserService {
 
     public Product findProductByName(String productName){
         return shopService.findProductByName(productName);
+    }
+
+    public void buyProducts(){
+        withdrawBalance();
+        for(Product product : getShoppingCart().getProducts()){
+            transferMoneyToAuthor(product);
+            loggedInUser.getBoughtProducts().add(product);
+        }
+        shopService.deleteBoughtProducts();
+    }
+
+    private void withdrawBalance(){
+        loggedInUser.setBalance(loggedInUser.getBalance()-loggedInUser.getShoppingCart().getTotalPrice());
+    }
+
+    private void transferMoneyToAuthor(Product product){
+        product.getAuthor().setBalance(product.getAuthor().getBalance()+product.getPrice());
     }
 }

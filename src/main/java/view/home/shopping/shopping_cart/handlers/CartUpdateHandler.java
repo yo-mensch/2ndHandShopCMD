@@ -35,7 +35,6 @@ public class CartUpdateHandler implements Handler {
 
     public void printWarning(){
         System.out.println("------------WARNING------------");
-        System.out.println("You're about to delete a product");
         System.out.println("This action cannot be undone.");
         System.out.println("-------------------------------");
     }

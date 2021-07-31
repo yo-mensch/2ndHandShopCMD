@@ -7,6 +7,7 @@ import view.home.HomeView;
 import view.home.handlers.ProductHandler;
 import view.home.handlers.ShoppingHandler;
 import view.home.handlers.UserInfoHandler;
+import view.home.user_info.handlers.BoughtProductHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +43,13 @@ public class ShopService {
             if (userFound(logInUsername, logInPassword, user)) {
                 System.out.println("Successfully logged in!");
                 renderHomeView(user);
+                break;
             } else {
                 System.out.println("Username or password not correcto");
+                return;
             }
         }
+        return;
     }
 
     private boolean userFound(String logInUsername, String logInPassword, User user) {
@@ -58,8 +62,9 @@ public class ShopService {
         UserInfoHandler userInfoHandler = new UserInfoHandler(userService, scanner);
         ProductHandler productHandler = new ProductHandler(userService,scanner);
         ShoppingHandler shoppingHandler = new ShoppingHandler(userService,scanner);
+        BoughtProductHandler boughtProductHandler = new BoughtProductHandler(userService);
 
-        HomeView homeView = new HomeView(userInfoHandler,productHandler,shoppingHandler, scanner);
+        HomeView homeView = new HomeView(userInfoHandler,productHandler,shoppingHandler,boughtProductHandler, scanner);
         homeView.run();
     }
 
@@ -126,7 +131,10 @@ public class ShopService {
     public void deleteBoughtProducts(){
         for(Product product : shop.getProductList()){
             if(product.isBought()){
-                product.getAuthor().getProductsForSale().remove(product);
+                User author = product.getAuthor();
+                List<Product> authorsProducts = author.getProductsForSale();
+                authorsProducts.remove(product);
+                author.setProductsForSale(authorsProducts);
                 deleteProductFromShop(product);
             }
         }

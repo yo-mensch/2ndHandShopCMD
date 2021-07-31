@@ -22,7 +22,7 @@ public class ShoppingCartView {
         this.userService = userService;
         this.scanner = scanner;
         cartUpdateHandler = new CartUpdateHandler(userService,scanner);
-        checkoutHandler = new CheckoutHandler();
+        checkoutHandler = new CheckoutHandler(userService,scanner);
         addCommands();
         this.controller = new Controller(commands);
     }

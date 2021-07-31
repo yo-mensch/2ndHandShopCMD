@@ -5,6 +5,7 @@ import view.Controller;
 import view.home.handlers.ProductHandler;
 import view.home.handlers.ShoppingHandler;
 import view.home.handlers.UserInfoHandler;
+import view.home.user_info.handlers.BoughtProductHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +18,9 @@ public class HomeView {
     private UserInfoHandler userInfoHandler;
     private ProductHandler productHandler;
     private ShoppingHandler shoppingHandler;
+    private BoughtProductHandler boughtProductHandler;
 
-    public HomeView(UserInfoHandler userInfoHandler, ProductHandler productHandler, ShoppingHandler shoppingHandler, Scanner scanner) {
+    public HomeView(UserInfoHandler userInfoHandler, ProductHandler productHandler, ShoppingHandler shoppingHandler,BoughtProductHandler boughtProductHandler, Scanner scanner) {
         this.scanner = scanner;
         this.userInfoHandler = userInfoHandler;
         this.productHandler = productHandler;
@@ -32,6 +34,7 @@ public class HomeView {
         commands.put("1",userInfoHandler);
         commands.put("2", productHandler);
         commands.put("3", shoppingHandler);
+        commands.put("4",boughtProductHandler);
     }
 
     public void run(){
@@ -40,7 +43,7 @@ public class HomeView {
         do {
             userInput = scanner.nextLine();
 
-            if(!userInput.equals("0")&&!userInput.equals("4")){
+            if(!userInput.equals("0")){
                 controller.handleUserInput(userInput);
             }
 
@@ -53,7 +56,7 @@ public class HomeView {
         System.out.println("1 - Edit user info");
         System.out.println("2 - Manage my products");
         System.out.println("3 - Go to shop");
-        System.out.println("4 - Print your info");
+        System.out.println("4 - Print bought products");
         System.out.println("0 - Log out");
     }
 }
