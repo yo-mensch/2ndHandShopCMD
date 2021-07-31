@@ -5,8 +5,12 @@ import model.Shop;
 import model.User;
 import view.home.HomeView;
 import view.home.handlers.ProductHandler;
+import view.home.handlers.ShoppingHandler;
 import view.home.handlers.UserInfoHandler;
+import view.home.user_info.handlers.BoughtProductHandler;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ShopService {
@@ -39,10 +43,13 @@ public class ShopService {
             if (userFound(logInUsername, logInPassword, user)) {
                 System.out.println("Successfully logged in!");
                 renderHomeView(user);
+                break;
             } else {
                 System.out.println("Username or password not correcto");
+                return;
             }
         }
+        return;
     }
 
     private boolean userFound(String logInUsername, String logInPassword, User user) {
@@ -54,8 +61,10 @@ public class ShopService {
         UserService userService = new UserService(user, this);
         UserInfoHandler userInfoHandler = new UserInfoHandler(userService, scanner);
         ProductHandler productHandler = new ProductHandler(userService,scanner);
+        ShoppingHandler shoppingHandler = new ShoppingHandler(userService,scanner);
+        BoughtProductHandler boughtProductHandler = new BoughtProductHandler(userService);
 
-        HomeView homeView = new HomeView(userInfoHandler,productHandler, scanner);
+        HomeView homeView = new HomeView(userInfoHandler,productHandler,shoppingHandler,boughtProductHandler, scanner);
         homeView.run();
     }
 
@@ -100,4 +109,34 @@ public class ShopService {
         addUserToShop(newUser);
     }
 
+    public List<Product> getAvailableProducts(User user){
+        List<Product> foundProducts = new ArrayList<>();
+        for(Product product : shop.getProductList()){
+            if(product.getAuthor() != user) {
+                foundProducts.add(product);
+            }
+        }
+        return foundProducts;
+    }
+
+    public Product findProductByName(String productName){
+        for(Product product : shop.getProductList()){
+            if(product.getName().equals(productName)){
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public void deleteBoughtProducts(){
+        for(Product product : shop.getProductList()){
+            if(product.isBought()){
+                User author = product.getAuthor();
+                List<Product> authorsProducts = author.getProductsForSale();
+                authorsProducts.remove(product);
+                author.setProductsForSale(authorsProducts);
+                deleteProductFromShop(product);
+            }
+        }
+    }
 }

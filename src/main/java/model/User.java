@@ -10,7 +10,10 @@ public class User {
     private String password;
     private String email;
     private List<Product> productsForSale;
+    private List<Product> boughtProducts;
     private Address address;
+    private ShoppingCart shoppingCart;
+    private float balance;
 
     public User(String username, String password, String email) {
         this.id = UUID.randomUUID();
@@ -18,6 +21,9 @@ public class User {
         this.password = password;
         this.email = email;
         this.productsForSale = new ArrayList<>();
+        this.boughtProducts = new ArrayList<>();
+        this.balance = 100;
+        this.shoppingCart = new ShoppingCart(new ArrayList<>(),0);
     }
 
     public UUID getId() {
@@ -62,5 +68,29 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public List<Product> getBoughtProducts() {
+        return boughtProducts;
+    }
+
+    public void setBoughtProducts(List<Product> boughtProducts) {
+        this.boughtProducts = boughtProducts;
     }
 }
