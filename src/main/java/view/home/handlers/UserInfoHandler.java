@@ -17,7 +17,6 @@ public class UserInfoHandler implements Handler {
 
     @Override
     public void execute(){
-        System.out.println("You entered user info handler");
         UserInfoView userInfoView = new UserInfoView(scanner, userService);
         userInfoView.run();
     }

@@ -2,6 +2,7 @@ package view.main.handlers;
 
 import service.ShopService;
 import view.handler.Handler;
+import view.printer.Printer;
 
 import java.util.Scanner;
 
@@ -16,11 +17,11 @@ public class RegisterHandler implements Handler {
 
     @Override
     public void execute() {
-        System.out.println("Enter username:");
+        Printer.printMessage("Enter username:");
         String usernameInput = scanner.nextLine();
-        System.out.println("Enter email");
+        Printer.printMessage("Enter email");
         String emailInput = scanner.nextLine();
-        System.out.println("Enter password:");
+        Printer.printMessage("Enter password:");
         String passwordInput = scanner.nextLine();
         shopService.register(usernameInput,passwordInput,emailInput);
     }

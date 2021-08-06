@@ -3,6 +3,7 @@ package view.home.shopping.shopping_cart.handlers;
 import service.UserService;
 import view.handler.Handler;
 import view.home.user_info.handlers.AddressHandler;
+import view.printer.Printer;
 
 import java.util.Scanner;
 
@@ -20,16 +21,16 @@ public class CheckoutHandler implements Handler {
         if(!userService.isCartEmpty()){
             if(enoughMoney()){
                 if (!hasAddress()) {
-                    System.out.println("You have not provided your address!");
+                    Printer.printMessage("You have not provided your address!");
                     AddressHandler addressHandler = new AddressHandler(userService, scanner);
                     addressHandler.execute();
                 }
                 checkout();
             } else {
-                System.out.println("You don't have enough money in your balance!");
+                Printer.printMessage("You don't have enough money in your balance!");
             }
         } else {
-            System.out.println("You cannot checkout with an empty cart!");
+            Printer.printMessage("You cannot checkout with an empty cart!");
         }
     }
 
@@ -43,6 +44,6 @@ public class CheckoutHandler implements Handler {
 
     private void checkout(){
         userService.buyProducts();
-        System.out.println("Success!");
+        Printer.printMessage("Success!");
     }
 }

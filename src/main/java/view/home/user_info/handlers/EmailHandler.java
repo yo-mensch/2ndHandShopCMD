@@ -2,6 +2,7 @@ package view.home.user_info.handlers;
 
 import service.UserService;
 import view.handler.Handler;
+import view.printer.Printer;
 
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class EmailHandler implements Handler {
 
     @Override
     public void execute(){
-        System.out.println("Enter new email: ");
+        Printer.printMessage("Enter new email: ");
         String newEmail = scanner.nextLine();
         userService.updateEmail(newEmail);
     }

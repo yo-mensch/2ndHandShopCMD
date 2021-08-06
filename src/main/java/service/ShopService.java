@@ -8,6 +8,7 @@ import view.home.handlers.ProductHandler;
 import view.home.handlers.ShoppingHandler;
 import view.home.handlers.UserInfoHandler;
 import view.home.user_info.handlers.BoughtProductHandler;
+import view.printer.Printer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,17 +36,17 @@ public class ShopService {
    public void login(String logInUsername, String logInPassword) {
 
         if (shop.getUserList().isEmpty()) {
-            System.out.println("Username or password not correct");
+            Printer.printMessage("Username or password not correct");
             return;
         }
 
         for (User user : shop.getUserList()) {
             if (userFound(logInUsername, logInPassword, user)) {
-                System.out.println("Successfully logged in!");
+                Printer.printMessage("Successfully logged in!");
                 renderHomeView(user);
                 break;
             } else {
-                System.out.println("Username or password not correcto");
+                Printer.printMessage("Username or password not correct");
                 return;
             }
         }
@@ -76,11 +77,11 @@ public class ShopService {
 
     private boolean isUserTaken(String inputUsername, String inputEmail) {
         if (findUserByEmail(inputEmail) != null) {
-            System.out.println("User with this email is already registered");
+            Printer.printMessage("User with this email is already registered");
             return true;
         }
         if (findUserByUsername(inputUsername) != null) {
-            System.out.println("Username already exists");
+            Printer.printMessage("Username already exists");
             return true;
         }
         return false;

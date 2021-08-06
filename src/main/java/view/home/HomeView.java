@@ -6,6 +6,7 @@ import view.home.handlers.ProductHandler;
 import view.home.handlers.ShoppingHandler;
 import view.home.handlers.UserInfoHandler;
 import view.home.user_info.handlers.BoughtProductHandler;
+import view.printer.Printer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,11 +53,6 @@ public class HomeView {
     }
 
     private void printMenu(){
-        System.out.println("-----Logged In-----");
-        System.out.println("1 - Edit user info");
-        System.out.println("2 - Manage my products");
-        System.out.println("3 - Go to shop");
-        System.out.println("4 - Print bought products");
-        System.out.println("0 - Log out");
+        Printer.printMainMenu();
     }
 }

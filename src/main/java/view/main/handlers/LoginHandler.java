@@ -2,6 +2,7 @@ package view.main.handlers;
 
 import service.ShopService;
 import view.handler.Handler;
+import view.printer.Printer;
 
 import java.util.Scanner;
 
@@ -16,10 +17,9 @@ public class LoginHandler implements Handler {
 
     @Override
     public void execute() {
-        System.out.println("Login handler entered");
-        System.out.println("Enter username: ");
+        Printer.printMessage("Enter username: ");
         String logInUsername = scanner.nextLine();
-        System.out.println("Enter password: ");
+        Printer.printMessage("Enter password: ");
         String logInPassword = scanner.nextLine();
         shopService.login(logInUsername, logInPassword);
     }

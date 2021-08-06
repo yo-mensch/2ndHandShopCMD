@@ -5,6 +5,7 @@ import view.Controller;
 import view.home.user_info.handlers.AddressHandler;
 import view.home.user_info.handlers.EmailHandler;
 import view.home.user_info.handlers.PasswordHandler;
+import view.printer.Printer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,10 +38,10 @@ public class UserInfoView {
     }
 
     private void printMenu() {
-        System.out.println("1 - Update password");
-        System.out.println("2 - Update email");
-        System.out.println("3 - Update address");
-        System.out.println("0 - Exit this menu");
+        Printer.printMessage("1 - Update password");
+        Printer.printMessage("2 - Update email");
+        Printer.printMessage("3 - Update address");
+        Printer.printMessage("0 - Exit this menu");
     }
 
     public void run() {

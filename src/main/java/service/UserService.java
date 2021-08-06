@@ -4,6 +4,7 @@ import model.Address;
 import model.Product;
 import model.ShoppingCart;
 import model.User;
+import view.printer.Printer;
 
 import java.util.List;
 
@@ -68,7 +69,7 @@ public class  UserService {
                 return;
             }
         }
-        System.out.println("Product not found");
+        Printer.printMessage("Product not found");
     }
 
     public void updateUserAddress(Address address) {
@@ -104,10 +105,7 @@ public class  UserService {
     }
 
     public boolean isCartEmpty(){
-        for(Product product : getShoppingCart().getProducts()){
-            return false;
-        }
-        return true;
+        return getShoppingCart().getProducts().isEmpty();
     }
 
     public Product findProductByName(String productName){

@@ -5,6 +5,7 @@ import model.ShoppingCart;
 import service.UserService;
 import view.handler.Handler;
 import view.home.shopping.shopping_cart.ShoppingCartView;
+import view.printer.Printer;
 
 import java.util.Scanner;
 
@@ -20,8 +21,8 @@ public class ShoppingCartHandler implements Handler {
     @Override
     public void execute() {
         if(userService.isCartEmpty()){
-            System.out.println("Your cart is empty!");
-            System.out.println("Total price: 0.0$");
+            Printer.printMessage("Your cart is empty!");
+            Printer.printMessage("Total price: 0.0$");
         } else {
             printCart();
             ShoppingCartView shoppingCartView = new ShoppingCartView(userService,scanner);
@@ -30,15 +31,8 @@ public class ShoppingCartHandler implements Handler {
     }
 
     private void printCart() {
-        System.out.println("-----Your Shopping Cart-----");
-        int index = 0;
-        for(Product product : userService.getShoppingCart().getProducts()){
-            index++;
-            System.out.println(index + ". " + product.getName());
-            System.out.println("Price: " + product.getPrice());
-            System.out.println("Description: " + product.getDescription());
-            System.out.println("----------------");
-        }
+        Printer.printMessage("-----Your Shopping Cart-----");
+        Printer.printProductArray(userService.getShoppingCart().getProducts());
         System.out.printf("Total:   $"+userService.getShoppingCart().getTotalPrice());
     }
 }

@@ -4,6 +4,7 @@ import service.UserService;
 import view.Controller;
 import view.home.shopping.handlers.AvailableProductHandler;
 import view.home.shopping.handlers.ShoppingCartHandler;
+import view.printer.Printer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,9 +47,9 @@ public class ShoppingView {
     }
 
     public void printMenu(){
-        System.out.println("------------------");
-        System.out.println("1 - View your cart");
-        System.out.println("2 - View available products");
-        System.out.println("0 - Exit this menu");
+        Printer.printSeparation();
+        Printer.printMessage("1 - View your cart");
+        Printer.printMessage("2 - View available products");
+        Printer.printMessage("0 - Exit this menu");
     }
 }

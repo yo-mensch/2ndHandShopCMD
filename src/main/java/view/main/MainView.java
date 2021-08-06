@@ -4,6 +4,7 @@ import service.ShopService;
 import view.Controller;
 import view.main.handlers.LoginHandler;
 import view.main.handlers.RegisterHandler;
+import view.printer.Printer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,9 +46,6 @@ public class MainView {
     }
 
     private void showMainMenu() {
-        System.out.println("Welcome to Jogurtowska Shop");
-        System.out.println("1 - Login");
-        System.out.println("2 - Register");
-        System.out.println("0 - exit");
+        Printer.printLogInMenu();
     }
 }

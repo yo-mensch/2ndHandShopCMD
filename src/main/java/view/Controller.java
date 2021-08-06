@@ -1,6 +1,7 @@
 package view;
 
 import view.handler.Handler;
+import view.printer.Printer;
 
 import java.util.Map;
 
@@ -16,7 +17,7 @@ public class Controller {
             Handler handler = commands.get(userInput);
             handler.execute();
         } else {
-            System.out.println("Command not found");
+            Printer.printMessage("Command not found");
         }
     }
 }

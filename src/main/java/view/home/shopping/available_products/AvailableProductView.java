@@ -2,6 +2,7 @@ package view.home.shopping.available_products;
 
 import model.Product;
 import service.UserService;
+import view.printer.Printer;
 
 import java.util.Scanner;
 
@@ -16,9 +17,9 @@ public class AvailableProductView {
 
     public void run(){
         if(isShopEmpty()){
-            System.out.println("--------------");
-            System.out.println("Shop is empty!");
-            System.out.println("--------------");
+            Printer.printSeparation();
+            Printer.printMessage("Shop is empty!");
+            Printer.printSeparation();
         } else {
             printAvailableProducts();
             handleInput();
@@ -33,31 +34,23 @@ public class AvailableProductView {
     }
 
     private void printAvailableProducts(){
-        int index = 0;
-        System.out.println("----------------");
-        for(Product product : userService.getAvailableProducts()){
-            index++;
-            System.out.println(index + ". " + product.getName());
-            System.out.println("Price: " + product.getPrice());
-            System.out.println("Description: " + product.getDescription());
-            System.out.println("----------------");
-        }
+        Printer.printProductArray(userService.getAvailableProducts());
     }
 
     private void handleInput() {
-        System.out.println("Enter a product name to add it to your cart!");
-        System.out.println("0 - exit");
+        Printer.printMessage("Enter a product name to add it to your cart!");
+        Printer.printMessage("0 - exit");
         String userInput = "";
         do {
             userInput = scanner.nextLine();
             if(!userInput.equals("0")) {
                 Product foundProduct = userService.findProductByName(userInput);
                 if (foundProduct == null) {
-                    System.out.println("Product with this name does not exist!");
+                    Printer.printMessage("Product with this name does not exist!");
                 } else {
                     userService.addProductToCart(foundProduct);
-                    System.out.println("Product added to your Cart!");
-                    System.out.println("----------------------");
+                    Printer.printMessage("Product added to your Cart!");
+                    Printer.printSeparation();
                     userInput = "";
                 }
             }

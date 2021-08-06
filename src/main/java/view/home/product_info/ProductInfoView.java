@@ -5,6 +5,7 @@ import view.Controller;
 import view.home.product_info.handlers.ProductAdditionHandler;
 import view.home.product_info.handlers.ProductDeletionHandler;
 import view.home.product_info.handlers.ProductListHandler;
+import view.printer.Printer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,10 +52,10 @@ public class ProductInfoView {
     }
 
     private void printMenu() {
-        System.out.println("1 - Add new product");
-        System.out.println("2 - Delete product");
-        System.out.println("3 - View your products");
-        System.out.println("0 - Exit this menu");
+        Printer.printMessage("1 - Add new product");
+        Printer.printMessage("2 - Delete product");
+        Printer.printMessage("3 - View your products");
+        Printer.printMessage("0 - Exit this menu");
     }
 
 
